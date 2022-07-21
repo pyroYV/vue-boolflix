@@ -3,6 +3,7 @@
     <Header @searchInput='searchCallBack' />
     <Main 
     :MovieArray = 'movieResultArray'
+    :SeriesArray = 'seriesResultArray'
     />
     
   </div>
@@ -27,10 +28,12 @@ export default {
 
       apiSearch: 'https://api.themoviedb.org/3/search/',
       apiMovie:'movie?',
+      apiSeries:'tv?',
       apiKey:'api_key=fc7176f21c9d0e2ebc73ae83e20968a4',
       addQuery:'&query=',
       userQuery:'ritorno',
       movieResultArray:[],
+      seriesResultArray:[],
 
 
     }
@@ -51,10 +54,27 @@ export default {
           .catch((error) =>{
               console.warn(error)
           })
-    },
+      },
+      getSeries(){
+      axios.get(
+          this.apiSearch+
+          this.apiSeries+
+          this.apiKey+
+          this.addQuery+
+          this.searchQuery
+          )
+          .then((response) =>{
+              this.seriesResultArray = response.data.results;
+              console.log(this.seriesResultArray)
+          })
+          .catch((error) =>{
+              console.warn(error)
+          })
+      },
     searchCallBack(input){
       this.searchQuery = input
       this.getMovies()
+      this.getSeries()
     }
   },
     mounted() {

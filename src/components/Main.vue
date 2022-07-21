@@ -1,25 +1,21 @@
 <template>
 <div class="container">
   <div class="row">
-    <ul v-for="(item, index) in MovieArray" :key="index" class="col-2 mx-2 bg-primary">
-        <li>
-            {{item.title}}
-        </li>
-        <li>
-            {{item.original_title}}
-        </li>
-        <li>
-            {{item.original_language}}
-        </li>
-        <li>
-            {{item.vote_average}}
-        </li>
-    </ul>
+    <FilmList 
+    :MovieArray = MovieArray
+    />
+    <SeriesList 
+    :SeriesArray = SeriesArray
+    />
+    
+   
   </div>
 </div>
 </template>
 
 <script>
+import FilmList from './FilmList.vue'
+import SeriesList from './SeriesList.vue'
 
 
 export default {
@@ -30,8 +26,13 @@ export default {
             
         }
     },
+    components:{
+        FilmList,
+        SeriesList
+    },
     props: {
-       MovieArray: Array
+       MovieArray: Array,
+       SeriesArray: Array
     },
 
 
