@@ -32,6 +32,16 @@ export default {
                     return 'cn'
                 case 'da':
                     return 'dk'
+                case 'el':
+                    return 'gr'
+                case 'he':
+                    return 'il'
+                case 'cs':
+                    return 'cz'
+                case 'nb':
+                    return 'no'
+                case 'hi':
+                    return 'in'
             } 
             
             return input
