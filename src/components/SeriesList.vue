@@ -9,7 +9,9 @@
             {{item.original_name}}
         </li>
         <li>
-            {{item.original_language}}
+        <LanguageFlag
+            :language = item.original_language
+        />
         </li>
         <li>
             {{item.vote_average}}
@@ -19,14 +21,22 @@
 </template>
 
 <script>
+import LanguageFlag from './LanguageFlag.vue';
+
 export default {
     data() {
         return {
             
         }
     },
+    components:{
+        LanguageFlag
+    },
     props:{
         SeriesArray: Array
+    },
+    methods: {
+
     },
 }
 </script>
