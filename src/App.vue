@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Header @searchInput='searchCallBack' />
-    <Main />
+    <Main 
+    :MovieArray = 'movieResultArray'
+    />
     
   </div>
 </template>
