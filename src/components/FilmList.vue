@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="row justify-content-center">
     <h2>Movies</h2>
-     <ul v-for="(item, index) in MovieArray" :key="index" class="col-2 mx-2 bg-primary">
+     <ul v-for="(item, index) in MovieArray" :key="index" class="col-2 bg-primary mx-2">
         <li>
             {{item.title}}
         </li>

@@ -1,15 +1,13 @@
 <template>
-<div class="container">
-  <div class="row">
+<div class="container bg-secondary">
+ 
     <FilmList 
     :MovieArray = MovieArray
     />
     <SeriesList 
     :SeriesArray = SeriesArray
     />
-    
    
-  </div>
 </div>
 </template>
 
