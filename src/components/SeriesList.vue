@@ -17,7 +17,7 @@
         />
         </li>
         <li>
-            {{item.vote_average}}
+           <span v-for="n in convertVote(item.vote_average)" :key='n'>⭐</span>
         </li>
     </ul>
   </div>
@@ -46,6 +46,9 @@ export default {
                 return this.imgUrl + url
             }
             
+        },
+        convertVote(vote){
+            return Math.max(Math.ceil(vote / 2), 1)
         },
 
     },

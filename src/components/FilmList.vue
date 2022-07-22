@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center">
     <h2>Movies</h2>
-     <ul v-for="(item, id) in MovieArray" :key="id" class="col-6 bg-primary mx-2 ">
+     <ul v-for="(item, id) in MovieArray" :key="id" class="col-3 bg-primary mx-2 ">
         <li>
             <img :src="checkImageUrl(item.poster_path)" class="mt-1" :alt="item.title"></li> 
         <li>
@@ -51,9 +51,6 @@ export default {
         convertVote(vote){
             return Math.max(Math.ceil(vote / 2), 1)
         },
-        voteToStars(){
-           
-        }
     },
 }
 </script>
