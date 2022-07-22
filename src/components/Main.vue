@@ -1,5 +1,5 @@
 <template>
-<div class="container-fluid bg-secondary">
+<div class="container-fluid">
  
     <FilmList 
     :MovieArray = MovieArray

@@ -94,10 +94,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: white;
+  background-color: #141414;
 
-  margin-top: 60px;
   ul{
     list-style: none;
+    padding: 0;
+    margin: 0;
   }
 }
 </style>
