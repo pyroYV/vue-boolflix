@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center">
     <h2>Movies</h2>
-     <ul v-for="(item, index) in MovieArray" :key="index" class="col-6 bg-primary mx-2 ">
+     <ul v-for="(item, id) in MovieArray" :key="id" class="col-6 bg-primary mx-2 ">
         <li>
             <img :src="checkImageUrl(item.poster_path)" class="mt-1" :alt="item.title"></li> 
         <li>
@@ -15,8 +15,9 @@
             :language = item.original_language
         />
         </li>
-        <li>
-            {{item.vote_average}}
+        <li> 
+            <span v-for="n in convertVote(item.vote_average)" :key='n'>⭐</span>
+            
         </li>
     </ul>
   </div>
@@ -28,7 +29,8 @@ import LanguageFlag from './LanguageFlag.vue';
 export default {
     data() {
         return {
-            imgUrl: 'https://image.tmdb.org/t/p/w342/'
+            imgUrl: 'https://image.tmdb.org/t/p/w342/',
+            convertedVote: 0
         }
     },
     components:{
@@ -40,11 +42,17 @@ export default {
     methods: {
         checkImageUrl(url){
             if(url == null || url === '') 
-            return 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbz-qjFpeFVXeIE2W6QbRO8XSR-1EGRl41YQVnIHUzqTTbkED_HPHYhrOENzyu3S_vkvY&usqp=CAU'
+            return 'https://i.pinimg.com/474x/e1/30/1a/e1301a5564175ad4c073fd2e6d13617c.jpg'
             else{
                 return this.imgUrl + url
             }
             
+        },
+        convertVote(vote){
+            return Math.max(Math.ceil(vote / 2), 1)
+        },
+        voteToStars(){
+           
         }
     },
 }
