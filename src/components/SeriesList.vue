@@ -103,7 +103,7 @@ export default {
     .card-info{
         bottom: 0;
         right:0%;
-        background-color: grey;
+        background-color: #0a0a0a;
         width: 415px;
         max-height: 300px;
         padding: 1rem;
