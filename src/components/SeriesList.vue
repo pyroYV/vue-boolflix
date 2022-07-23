@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center">
     <h2>Series</h2>
-     <ul v-for="(item, index) in SeriesArray" :key="index" class="col-2 bg-primary mx-2">
+<!--      <ul v-for="(item, index) in SeriesArray" :key="index" class="col-2 bg-primary mx-2">
         <li>
             <img :src="checkImageUrl(item.poster_path)" class="mt-1" :alt="item.title"></li> 
         <li>
@@ -19,7 +19,39 @@
         <li>
            <span v-for="n in convertVote(item.vote_average)" :key='n'>⭐</span>
         </li>
-    </ul>
+    </ul> -->
+
+    <div v-for="(item, id) in SeriesArray" :key="id"  class="col-3 mx-2 my-2 card-thumb">
+    <div class="img-container position-relative"  >
+    <img :src="checkImageUrl(item.poster_path)" :alt="item.title"
+    class="display-inline-block">
+    <div class="card-info position-absolute">
+        <ul>
+            <li>
+                Title: {{item.name}}
+            </li>
+            <li>
+                Original Title : {{item.original_name}}
+            </li>
+            <li>
+                <LanguageFlag
+                :language = item.original_language
+                />  
+            </li>
+            <li>
+                <span v-for="n in convertVote(item.vote_average)" :key='n'>⭐</span>
+            </li>
+            <li>
+                <div class="item-overview">
+                {{item.overview}}
+                </div>
+            </li>
+        </ul>
+    </div>
+    </div>
+
+
+    </div>
   </div>
 </template>
 
@@ -56,5 +88,37 @@ export default {
 </script>
 
 <style lang='scss'>
+.card-thumb{
+    .img-container{
+        width: 415px;
+        height: 600px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+        &:hover .card-info{
+            visibility: visible;
+        }
+    .card-info{
+        bottom: 0;
+        right:0%;
+        background-color: grey;
+        width: 415px;
+        max-height: 300px;
+        padding: 1rem;
+        overflow: hidden;
+        visibility: hidden;
+        .item-overview{
+            max-height: 100px;
+            overflow: hidden;
+        }
+        ul{
+            display: flex;
+            flex-direction: column;
+        }
 
+    }
+
+}
 </style>

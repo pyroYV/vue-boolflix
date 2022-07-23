@@ -21,11 +21,10 @@
         </li>
     </ul> -->
 
-    <div v-for="(item, id) in MovieArray" :key="id"  class="col-3 position-relative card">
-        <div class="img-container">
+    <div v-for="(item, id) in MovieArray" :key="id"  class="col-3 mx-2 my-2 card-thumb">
+        <div class="img-container position-relative"  >
         <img :src="checkImageUrl(item.poster_path)" :alt="item.title"
         class="display-inline-block">
-        </div>
         <div class="card-info position-absolute">
             <ul>
                 <li>
@@ -42,7 +41,13 @@
                 <li>
                     <span v-for="n in convertVote(item.vote_average)" :key='n'>⭐</span>
                 </li>
+                <li>
+                    <div class="item-overview">
+                    {{item.overview}}
+                    </div>
+                </li>
             </ul>
+        </div>
         </div>
 
 
@@ -57,7 +62,8 @@ export default {
     data() {
         return {
             imgUrl: 'https://image.tmdb.org/t/p/w342/',
-            convertedVote: 0
+            convertedVote: 0,
+            show:false,
         }
     },
     components:{
@@ -81,30 +87,38 @@ export default {
     },
 }
 </script>
-style
+
 <style lang="scss" scoped>
-.card{
-    margin-right:10px;
-    
+
+
+.card-thumb{
     .img-container{
-        width: 342px;
+        width: 415px;
+        height: 600px;
         img{
-            max-width: 342px;
-            min-height: 513px;
+            width: 100%;
+            height: 100%;
         }
     }
+        &:hover .card-info{
+            visibility: visible;
+        }
     .card-info{
         bottom: 0;
-        right:0;
+        right:0%;
         background-color: grey;
-        width: 100%;
-
-
+        width: 415px;
+        max-height: 300px;
+        padding: 1rem;
+        overflow: hidden;
+        visibility: hidden;
+        .item-overview{
+            max-height: 100px;
+            overflow: hidden;
+        }
         ul{
-            
             display: flex;
             flex-direction: column;
-         
         }
 
     }

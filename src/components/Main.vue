@@ -39,7 +39,10 @@ export default {
 </script>
 
 <style lang="scss">
-    
+    .container{
+            overflow-x: auto;
+
+    }
 
 </style>
 
