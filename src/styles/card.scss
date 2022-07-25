@@ -1,0 +1,42 @@
+.img-container{
+    width: 415px;
+height: 600px;
+&:hover .card-info{
+    visibility: visible;
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+}
+
+.arrow-info{
+top: 0;
+right: 0;
+background-color: rgba($color: #000000, $alpha: 0.5);
+width: 3rem;
+height: 3rem;
+line-height: 3rem;            
+i{
+    font-size: 2rem;
+}
+}
+.card-info{
+bottom: 0;
+right:0%;
+background-color: #0a0a0a;
+width: 415px;
+max-height: 300px;
+padding: 1rem;
+overflow: hidden;
+visibility: hidden;
+    .item-overview{
+        max-height: 100px;
+        overflow: hidden;
+    }
+    ul{
+        display: flex;
+        flex-direction: column;
+    }
+
+}
