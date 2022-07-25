@@ -1,4 +1,5 @@
 # vue-boolflix
+![B6b2DLEFGr](https://user-images.githubusercontent.com/61555067/180828356-bae1ceb6-f419-416c-92db-5a25fd4dedef.gif)
 
 ## Project setup
 ```
