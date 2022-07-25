@@ -17,9 +17,9 @@ background-color: rgba($color: #000000, $alpha: 0.5);
 width: 3rem;
 height: 3rem;
 line-height: 3rem;            
-i{
-    font-size: 2rem;
-}
+    i{
+        font-size: 2rem;
+    }
 }
 .card-info{
 bottom: 0;
@@ -39,4 +39,10 @@ visibility: hidden;
         flex-direction: column;
     }
 
+}
+
+.divisor{
+    height: 3px;
+    width: 100%;
+    background-color: deeppink;
 }

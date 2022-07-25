@@ -6,6 +6,7 @@
                 <SeriesCard 
                 :item = 'item'
                 :apiKey= "apiKey"
+                :seriesArrayGenres = 'seriesArrayGenres'
                 />
             </div>
         </div>
@@ -13,14 +14,15 @@
 </template>
 
 <script>
-
+import axios from 'axios';
 import SeriesCard from "./SeriesCard.vue";
 
 
 export default {
     data() {
         return {
-
+            seriesArrayGenres: [],
+            apiLinkGenreTvs: 'https://api.themoviedb.org/3/genre/tv/list'
                
         }
     },
@@ -32,7 +34,21 @@ export default {
         apiKey : String
     },
     methods: {
-       
+        getSeriesGenres(){
+            axios.
+            get(`${this.apiLinkGenreTvs}?${this.apiKey}&language=it-IT`)
+            .then((result) => {
+                this.seriesArrayGenres = result.data.genres
+                console.log({generi:this.seriesArrayGenres})
+                
+            })
+            .catch((error) => {
+                console.warn(error)
+            })
+        }
+    },
+    mounted(){
+        this.getSeriesGenres()
     },
 }
 </script>

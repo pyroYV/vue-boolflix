@@ -21,9 +21,6 @@
                     {{item.overview}}
                 </div>
             </li>
-            <li>
-                {{item.id}}
-            </li>
         </ul>
     </div>
     <div class="card-info position-absolute" v-else>
@@ -35,10 +32,23 @@
                 {{cast.name}} / {{cast.character}}
             </li>
         </ul>
+        <div class="divisor"></div> 
+        <ul>
+            <li>
+                Generi:
+            </li>
+            <li>
+                <span v-for="(genre, i) in item.genre_ids" :key="i" > {{fromIdtoGenre(genre)}}&#160;</span> 
+            </li> 
+        </ul>
     </div>
-    <div class="arrow-info position-absolute" @click="changeActive(),getCastSeries(item.id)">
+    <div class="arrow-info position-absolute" @click="changeActive(),getCastSeries(item.id)" v-if="!active" >
         <i class="bi bi-chevron-bar-left"></i>
     </div>
+        <div class="arrow-info position-absolute" @click="changeActive()" v-else >
+        <i class="bi bi-chevron-bar-right"></i>
+    </div>
+
 </div>
 </template>
 
@@ -63,7 +73,8 @@ export default {
     },
     props:{
         item: Object,
-        apiKey: String
+        apiKey: String,
+        seriesArrayGenres: Array
     },
     methods: {
          checkImageUrl(url){
@@ -87,7 +98,6 @@ export default {
             .then((result) => {
                 this.castArray = result.data.cast
                 this.castArray?.splice(5)
-                console.log(this.castArray)
             })
             .catch((error) =>{
                 console.warn(error)
@@ -95,8 +105,9 @@ export default {
         },
         changeActive(){
             this.active = !this.active
-            console.log(this.active)
-            
+        },
+        fromIdtoGenre(id){
+            return this.seriesArrayGenres.find(element => element.id == id).name
         }
     },
 

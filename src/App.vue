@@ -72,11 +72,12 @@ export default {
               console.warn(error)
           })
       },
-    searchCallBack(input){
-      this.searchQuery = input
-      this.getMovies()
-      this.getSeries()
-    }
+      searchCallBack(input){
+        this.searchQuery = input
+        this.getMovies()
+        this.getSeries()
+      },
+      
   },
     mounted() {
    
