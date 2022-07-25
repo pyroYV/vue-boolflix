@@ -6,6 +6,7 @@
     />
     <SeriesList 
     :SeriesArray = SeriesArray
+    :apiKey = apiKey
     />
    
 </div>
@@ -30,7 +31,8 @@ export default {
     },
     props: {
        MovieArray: Array,
-       SeriesArray: Array
+       SeriesArray: Array,
+       apiKey : String
     },
 
 

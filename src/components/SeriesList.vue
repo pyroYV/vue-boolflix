@@ -24,7 +24,13 @@
                                     {{item.overview}}
                                 </div>
                             </li>
+                            <li>
+                                {{item.id}}
+                            </li>
                         </ul>
+                    </div>
+                    <div class="arrow-info position-absolute" @click="getCastSeries(item.id)">
+                        <i class="bi bi-chevron-bar-left"></i>
                     </div>
                 </div>
             </div>
@@ -34,18 +40,25 @@
 
 <script>
 import LanguageFlag from './LanguageFlag.vue';
+import axios from 'axios';
+
 
 export default {
     data() {
         return {
-               imgUrl: 'https://image.tmdb.org/t/p/w342/'
+               imgUrl: 'https://image.tmdb.org/t/p/w342/',
+               apiLink:'https://api.themoviedb.org/3/tv/',
+               credits:'/credits?',
+               castArray: []
+               
         }
     },
     components:{
         LanguageFlag
     },
     props:{
-        SeriesArray: Array
+        SeriesArray: Array,
+        apiKey : String
     },
     methods: {
         checkImageUrl(url){
@@ -59,12 +72,28 @@ export default {
         convertVote(vote){
             return Math.max(Math.ceil(vote / 2), 1)
         },
-
+        getCastSeries(id){
+            axios
+            .get(
+                this.apiLink
+                + id 
+                + this.credits
+                + this.apiKey)
+            .then((result) => {
+                this.castArray = result.data.cast
+                this.castArray?.splice(5)
+                console.log(this.castArray)
+            })
+            .catch((error) =>{
+                console.warn(error)
+            })
+        }
     },
 }
 </script>
 
 <style lang='scss' scoped>
 @import '../styles/category.scss'; 
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 
 </style>

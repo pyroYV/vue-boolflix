@@ -4,6 +4,7 @@
     <Main 
     :MovieArray = 'movieResultArray'
     :SeriesArray = 'seriesResultArray'
+    :apiKey = 'apiKey'
     />
     
   </div>

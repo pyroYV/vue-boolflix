@@ -1,5 +1,5 @@
 <template>
-    <div class="row justify-content-center category">
+    <div class="mt-3 row justify-content-center category">
         <h2 class="ms-3">Movies</h2>
         <div class="slider">
             <div v-for="(item, id) in MovieArray" :key="id" class=" mx-2 my-2 card-thumb">
