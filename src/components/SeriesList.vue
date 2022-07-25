@@ -34,6 +34,7 @@ export default {
         apiKey : String
     },
     methods: {
+        /* api call to get series genres and put them into an array */
         getSeriesGenres(){
             axios.
             get(`${this.apiLinkGenreTvs}?${this.apiKey}&language=en-US`)

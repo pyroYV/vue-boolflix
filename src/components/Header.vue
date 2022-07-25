@@ -15,6 +15,7 @@ export default {
         }
     },
     methods: {
+        /* emit to get query from header to app component */
         emitSearch(){
             this.$emit('searchInput', this.searchQuery)
         }

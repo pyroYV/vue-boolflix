@@ -34,6 +34,7 @@ export default {
         apiKey : String
     },
     methods: {
+        /* api call to get movie genres and put them into an array */
         getFilmGenres(){
             axios.
             get(`${this.apiLinkGenreFilms}?${this.apiKey}&language=en-US`)

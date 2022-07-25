@@ -10,14 +10,15 @@ export default {
         language: String
     },
     methods: {
+        /* function that transforms lenguage code to flag emoji */
         getFlagEmoji() {
-        
             const codePoints = this.flagSpecialCases(this.language)
                 .toUpperCase()
                 .split('')
                 .map(char =>  127397 + char.charCodeAt());
             return String.fromCodePoint(...codePoints);
         },
+        /* function that handles cases in which the country's name isn't translated into the corresponding flag */
         flagSpecialCases(input){
             switch(input){
                 case 'en' : 

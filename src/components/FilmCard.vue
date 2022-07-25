@@ -1,7 +1,7 @@
 <template>
   <div class="img-container position-relative">
       <img :src="checkImageUrl(item.poster_path)" :alt="item.title" class="display-inline-block">
-
+        <!-- movie card info with position absolute that shows up when user hovers -->
         <div class="card-info position-absolute" v-if="!active">
               <ul>
                   <li>
@@ -11,9 +11,11 @@
                       Original Title : {{item.original_title}}
                   </li>
                   <li>
+                    <!-- component that handles transformation from lenguage code to flag emoji -->
                       <LanguageFlag :language=item.original_language />
                   </li>
                   <li>
+                    <!-- we use the convert Vote function with emojis to show the movies' rating -->
                       <span v-for="n in convertVote(item.vote_average)" :key='n'>⭐</span>
                   </li>
                   <li>
@@ -23,6 +25,7 @@
                   </li>
               </ul>
           </div>
+          <!-- extra info that comes up when user clicks on button -->
           <div class="card-info position-absolute" v-else>
               <ul>
                   <li>
@@ -42,6 +45,7 @@
                   </li>
               </ul>
           </div>
+          <!-- arrow button that changes active function and show extra info like cast and genres -->
           <div class="arrow-info position-absolute" @click="changeActive(),getCastMovies(item.id)" v-if="!active">
               <i class="bi bi-chevron-bar-left"></i>
           </div>
@@ -75,6 +79,7 @@ export default {
         filmArrayGenres: Array
     },
     methods: {
+        /* check if img is present and change it with placeholder one */
          checkImageUrl(url){
             if(url == null || url === '') 
             return 'https://i.pinimg.com/474x/e1/30/1a/e1301a5564175ad4c073fd2e6d13617c.jpg'
@@ -83,9 +88,11 @@ export default {
             }
             
         },
+        /* function to transform votes from 0 to 10 to 1 to 5 */
         convertVote(vote){
             return Math.max(Math.ceil(vote / 2), 1)
         },
+        /* api call to get movies' cast*/
         getCastMovies(id){
             axios
             .get(
@@ -101,9 +108,11 @@ export default {
                 console.warn(error)
             })
         },
+        /* active function to see further infos */
         changeActive(){
             this.active = !this.active
         },
+        /* search in genre array to find the id that match the movie */
         fromIdtoGenre(id){
             console.log({id,array:this.filmArrayGenres})
             return this.filmArrayGenres.find(element => element.id == id).name
