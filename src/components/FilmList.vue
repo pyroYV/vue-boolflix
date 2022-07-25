@@ -1,58 +1,36 @@
 <template>
-  <div class="row justify-content-center">
-    <h2>Movies</h2>
-<!--      <ul v-for="(item, id) in MovieArray" :key="id" class="col-3 bg-primary mx-2 ">
-        <li>
-            <img :src="checkImageUrl(item.poster_path)" class="mt-1" :alt="item.title"></li> 
-        <li>
-            {{item.title}}
-        </li>
-        <li>
-            {{item.original_title}}
-        </li>
-        <li>
-        <LanguageFlag
-            :language = item.original_language
-        />
-        </li>
-        <li> 
-            <span v-for="n in convertVote(item.vote_average)" :key='n'>⭐</span>
-            
-        </li>
-    </ul> -->
-
-    <div v-for="(item, id) in MovieArray" :key="id"  class="col-3 mx-2 my-2 card-thumb">
-        <div class="img-container position-relative"  >
-        <img :src="checkImageUrl(item.poster_path)" :alt="item.title"
-        class="display-inline-block">
-        <div class="card-info position-absolute">
-            <ul>
-                <li>
-                    Title: {{item.title}}
-                </li>
-                <li>
-                    Original Title : {{item.original_title}}
-                </li>
-                <li>
-                    <LanguageFlag
-                    :language = item.original_language
-                    />  
-                </li>
-                <li>
-                    <span v-for="n in convertVote(item.vote_average)" :key='n'>⭐</span>
-                </li>
-                <li>
-                    <div class="item-overview">
-                    {{item.overview}}
+    <div class="row justify-content-center category">
+        <h2 class="ms-3">Movies</h2>
+        <div class="slider">
+            <div v-for="(item, id) in MovieArray" :key="id" class=" mx-2 my-2 card-thumb">
+                <div class="img-container position-relative">
+                    <img :src="checkImageUrl(item.poster_path)" :alt="item.title" class="display-inline-block">
+                    <div class="card-info position-absolute">
+                        <ul>
+                            <li>
+                                Title: {{item.title}}
+                            </li>
+                            <li>
+                                Original Title : {{item.original_title}}
+                            </li>
+                            <li>
+                                <LanguageFlag :language=item.original_language />
+                            </li>
+                            <li>
+                                <span v-for="n in convertVote(item.vote_average)" :key='n'>⭐</span>
+                            </li>
+                            <li>
+                                <div class="item-overview">
+                                    {{item.overview}}
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                </li>
-            </ul>
-        </div>
-        </div>
+                </div>
+            </div>
 
-
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -89,42 +67,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-
-.card-thumb{
-    .img-container{
-        width: 415px;
-        height: 600px;
-        img{
-            width: 100%;
-            height: 100%;
-        }
-    }
-        &:hover .card-info{
-            visibility: visible;
-        }
-    .card-info{
-        bottom: 0;
-        right:0%;
-        background-color: #0a0a0a;
-        width: 415px;
-        max-height: 300px;
-        padding: 1rem;
-        overflow: hidden;
-        visibility: hidden;
-        .item-overview{
-            max-height: 100px;
-            overflow: hidden;
-        }
-        ul{
-            display: flex;
-            flex-direction: column;
-        }
-
-    }
-
-}
-    
+@import '../styles/category.scss';
 
 
 </style>
