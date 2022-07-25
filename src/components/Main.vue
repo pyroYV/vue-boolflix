@@ -3,6 +3,7 @@
  
     <FilmList 
     :MovieArray = MovieArray
+    :apiKey = apiKey
     />
     <SeriesList 
     :SeriesArray = SeriesArray

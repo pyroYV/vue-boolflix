@@ -36,11 +36,9 @@ export default {
     methods: {
         getSeriesGenres(){
             axios.
-            get(`${this.apiLinkGenreTvs}?${this.apiKey}&language=it-IT`)
+            get(`${this.apiLinkGenreTvs}?${this.apiKey}&language=en-US`)
             .then((result) => {
-                this.seriesArrayGenres = result.data.genres
-                console.log({generi:this.seriesArrayGenres})
-                
+                this.seriesArrayGenres = result.data.genres                
             })
             .catch((error) => {
                 console.warn(error)

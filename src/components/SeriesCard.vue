@@ -32,20 +32,20 @@
                 {{cast.name}} / {{cast.character}}
             </li>
         </ul>
-        <div class="divisor"></div> 
+        <div class="divisor"></div>
         <ul>
             <li>
                 Generi:
             </li>
             <li>
-                <span v-for="(genre, i) in item.genre_ids" :key="i" > {{fromIdtoGenre(genre)}}&#160;</span> 
-            </li> 
+                <span v-for="(genre, i) in item.genre_ids" :key="i"> {{fromIdtoGenre(genre)}}&#160;</span>
+            </li>
         </ul>
     </div>
-    <div class="arrow-info position-absolute" @click="changeActive(),getCastSeries(item.id)" v-if="!active" >
+    <div class="arrow-info position-absolute" @click="changeActive(),getCastSeries(item.id)" v-if="!active">
         <i class="bi bi-chevron-bar-left"></i>
     </div>
-        <div class="arrow-info position-absolute" @click="changeActive()" v-else >
+    <div class="arrow-info position-absolute" @click="changeActive()" v-else>
         <i class="bi bi-chevron-bar-right"></i>
     </div>
 

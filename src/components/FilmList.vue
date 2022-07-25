@@ -3,30 +3,12 @@
         <h2 class="ms-3">Movies</h2>
         <div class="slider">
             <div v-for="(item, id) in MovieArray" :key="id" class=" mx-2 my-2 card-thumb">
-                <div class="img-container position-relative">
-                    <img :src="checkImageUrl(item.poster_path)" :alt="item.title" class="display-inline-block">
-                    <div class="card-info position-absolute">
-                        <ul>
-                            <li>
-                                Title: {{item.title}}
-                            </li>
-                            <li>
-                                Original Title : {{item.original_title}}
-                            </li>
-                            <li>
-                                <LanguageFlag :language=item.original_language />
-                            </li>
-                            <li>
-                                <span v-for="n in convertVote(item.vote_average)" :key='n'>⭐</span>
-                            </li>
-                            <li>
-                                <div class="item-overview">
-                                    {{item.overview}}
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+             <FilmCard
+             :item = 'item'
+             :apiKey= "apiKey"
+             :filmArrayGenres = 'filmArrayGenres'
+              />
+
             </div>
 
         </div>
@@ -34,40 +16,44 @@
 </template>
 
 <script>
-import LanguageFlag from './LanguageFlag.vue';
+import axios from 'axios';
+import FilmCard from './FilmCard.vue'
 
 export default {
     data() {
         return {
-            imgUrl: 'https://image.tmdb.org/t/p/w342/',
-            convertedVote: 0,
-            show:false,
+            filmArrayGenres:[],
+            apiLinkGenreFilms: 'https://api.themoviedb.org/3/genre/movie/list',
         }
     },
     components:{
-        LanguageFlag
+        FilmCard,
     },
     props:{
-        MovieArray: Array
+        MovieArray: Array,
+        apiKey : String
     },
     methods: {
-        checkImageUrl(url){
-            if(url == null || url === '') 
-            return 'https://i.pinimg.com/474x/e1/30/1a/e1301a5564175ad4c073fd2e6d13617c.jpg'
-            else{
-                return this.imgUrl + url
-            }
-            
-        },
-        convertVote(vote){
-            return Math.max(Math.ceil(vote / 2), 1)
-        },
+        getFilmGenres(){
+            axios.
+            get(`${this.apiLinkGenreFilms}?${this.apiKey}&language=en-US`)
+            .then((result) => {
+                this.filmArrayGenres = result.data.genres   
+            })
+            .catch((error) => {
+                console.warn(error)
+            })
+        }
+    },
+    mounted(){
+        this.getFilmGenres()
     },
 }
 </script>
 
 <style lang="scss" scoped>
 @import '../styles/category.scss';
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 
 
 </style>
