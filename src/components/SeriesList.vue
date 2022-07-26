@@ -2,7 +2,7 @@
     <div class="row justify-content-center category mt-4">
         <h2 class="ms-3">Series</h2>
         <div class="slider">
-            <div v-for="(item, id) in SeriesArray" :key="id" class="mx-2 my-2 card-thumb" >
+            <div v-for="(item) in SeriesArray" :key="item.id" class="mx-2 my-2 card-thumb" >
                 <SeriesCard 
                 :item = 'item'
                 :apiKey= "apiKey"
